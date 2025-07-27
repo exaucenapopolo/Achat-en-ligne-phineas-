@@ -19,6 +19,7 @@
             --card-bg: #121220;
             --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--electric-blue));
             --gradient-dark: linear-gradient(135deg, var(--primary-black), var(--primary-dark));
+            --success-green: #00cc66;
         }
         
         * {
@@ -304,6 +305,10 @@
             transition: all 0.3s ease;
             width: 100%;
             margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .submit-btn:hover {
@@ -330,6 +335,109 @@
             font-weight: 700;
             font-size: 1.2rem;
             color: var(--accent-yellow);
+        }
+        
+        /* WhatsApp Success */
+        .whatsapp-success {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .whatsapp-success.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .success-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.5s ease;
+            border: 1px solid var(--primary-blue);
+            box-shadow: 0 10px 40px rgba(0, 103, 255, 0.3);
+        }
+        
+        .whatsapp-success.active .success-content {
+            transform: translateY(0);
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 50px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 163, 255, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(0, 163, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 163, 255, 0); }
+        }
+        
+        .success-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--success-green);
+        }
+        
+        .success-content p {
+            color: var(--text-gray);
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .whatsapp-number {
+            background: rgba(0, 103, 255, 0.15);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 1.3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--success-green);
+            border: 1px solid var(--primary-blue);
+        }
+        
+        .close-success {
+            background: var(--gradient-blue);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .close-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 103, 255, 0.4);
         }
         
         /* Footer */
@@ -539,11 +647,30 @@
                 flex-direction: column;
                 gap: 0;
             }
+            
+            .success-content {
+                padding: 30px 20px;
+            }
+            
+            .success-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 40px;
+            }
+            
+            .success-content h2 {
+                font-size: 1.8rem;
+            }
         }
         
         @media (max-width: 480px) {
             .page-title h1 {
                 font-size: 2rem;
+            }
+            
+            .whatsapp-number {
+                font-size: 1rem;
+                padding: 10px;
             }
         }
     </style>
@@ -559,7 +686,7 @@
                 <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
                 <li><a href="services.html"><i class="fas fa-rocket"></i> Services</a></li>
                 <li><a href="commandes.html" class="active"><i class="fas fa-shopping-cart"></i> Commandes</a></li>
-                <li><a href="#"><i class="fas fa-info-circle"></i> À Propos</a></li>
+                <li><a href="apropos.html"><i class="fas fa-info-circle"></i> À Propos</a></li>
                 <li><a href="https://social-boost-horizon-new-sbh.vercel.app" target="_blank"><i class="fas fa-headset"></i> Support</a></li>
             </ul>
             <div class="auth-buttons">
@@ -611,7 +738,7 @@
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <h3>Paiement et livraison</h3>
-                        <p>Effectuez le paiement et votre commande sera traitée immédiatement.</p>
+                        <p>Envoyez votre commande sur WhatsApp pour finaliser le paiement.</p>
                     </div>
                 </div>
                 
@@ -619,13 +746,13 @@
                     <div class="step-number">5</div>
                     <div class="step-content">
                         <h3>Suivi de commande</h3>
-                        <p>Suivez l'avancement de votre commande depuis votre espace client.</p>
+                        <p>Suivez l'avancement de votre commande via WhatsApp.</p>
                     </div>
                 </div>
             </div>
             
             <div class="order-form">
-                <form>
+                <form id="orderForm">
                     <div class="form-group">
                         <label for="platform">Plateforme</label>
                         <select id="platform" required>
@@ -674,7 +801,7 @@
                     </div>
                     
                     <button type="submit" class="submit-btn">
-                        <i class="fas fa-shopping-cart"></i> Commander maintenant
+                        <i class="fab fa-whatsapp"></i> Envoyer sur WhatsApp
                     </button>
                 </form>
                 
@@ -701,6 +828,31 @@
         </div>
     </div>
 
+    <!-- WhatsApp Success Modal -->
+    <div class="whatsapp-success" id="whatsappSuccess">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <h2>Commande envoyée avec succès!</h2>
+            <p>Votre commande a été préparée pour envoi sur WhatsApp.</p>
+            <p>Cliquez sur le bouton ci-dessous pour ouvrir WhatsApp et envoyer votre commande à notre équipe.</p>
+            
+            <div class="whatsapp-number">
+                <i class="fas fa-phone-alt"></i>
+                +243 811 127 593
+            </div>
+            
+            <button class="close-success" id="openWhatsApp">
+                <i class="fab fa-whatsapp"></i> Ouvrir WhatsApp
+            </button>
+            
+            <button class="close-success" id="closeSuccess" style="background: rgba(255,255,255,0.1); margin-top: 15px;">
+                <i class="fas fa-times"></i> Fermer
+            </button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -723,7 +875,7 @@
                     <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
                     <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
                     <li><a href="commandes.html"><i class="fas fa-chevron-right"></i> Commandes</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> À Propos</a></li>
+                    <li><a href="apropos.html"><i class="fas fa-chevron-right"></i> À Propos</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
                 </ul>
             </div>
@@ -742,9 +894,9 @@
             <div class="footer-contact">
                 <h3>Contact</h3>
                 <div class="contact-info">
-                    <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kinshasa, RDC</p>
                     <p><i class="fas fa-envelope"></i> contact@sedeckboost.com</p>
-                    <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+                    <p><i class="fas fa-phone"></i> +243 811 127 593</p>
                     <p><i class="fas fa-clock"></i> Support 24/7</p>
                 </div>
             </div>
@@ -800,8 +952,12 @@
             const summaryService = document.getElementById('summary-service');
             const summaryQuantity = document.getElementById('summary-quantity');
             const summaryPrice = document.getElementById('summary-price');
+            const orderForm = document.getElementById('orderForm');
+            const whatsappSuccess = document.getElementById('whatsappSuccess');
+            const openWhatsAppBtn = document.getElementById('openWhatsApp');
+            const closeSuccessBtn = document.getElementById('closeSuccess');
             
-            // Pricing data
+            // Pricing data in DOLLARS
             const pricing = {
                 instagram: {
                     followers: 0.05,
@@ -856,13 +1012,13 @@
                 if (platform && service && quantity > 0) {
                     const unitPrice = pricing[platform][service];
                     const totalPrice = (unitPrice * quantity).toFixed(2);
-                    priceInput.value = totalPrice + ' €';
+                    priceInput.value = '$' + totalPrice;
                     
                     // Update summary
                     summaryPlatform.textContent = platformSelect.options[platformSelect.selectedIndex].text;
                     summaryService.textContent = serviceSelect.options[serviceSelect.selectedIndex].text;
                     summaryQuantity.textContent = quantity.toLocaleString();
-                    summaryPrice.textContent = totalPrice + ' €';
+                    summaryPrice.textContent = '$' + totalPrice;
                 } else {
                     priceInput.value = 'Sélectionnez d\'abord';
                     
@@ -880,16 +1036,47 @@
             quantityInput.addEventListener('input', updatePrice);
             
             // Form submission
-            document.querySelector('form').addEventListener('submit', function(e) {
+            orderForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
                 if (platformSelect.value && serviceSelect.value && quantityInput.value > 0) {
-                    alert('Commande passée avec succès ! Notre équipe va traiter votre demande immédiatement.');
-                    this.reset();
-                    updatePrice();
+                    whatsappSuccess.classList.add('active');
                 } else {
                     alert('Veuillez remplir tous les champs requis.');
                 }
+            });
+            
+            // Open WhatsApp with order details
+            openWhatsAppBtn.addEventListener('click', function() {
+                const platform = platformSelect.options[platformSelect.selectedIndex].text;
+                const service = serviceSelect.options[serviceSelect.selectedIndex].text;
+                const quantity = parseInt(quantityInput.value);
+                const profile = document.getElementById('profile').value;
+                const instructions = document.getElementById('instructions').value;
+                const price = priceInput.value;
+                
+                // Construct WhatsApp message
+                const message = `Nouvelle commande SEDECK BOOST!%0A%0A` +
+                                `*Plateforme:* ${platform}%0A` +
+                                `*Service:* ${service}%0A` +
+                                `*Quantité:* ${quantity.toLocaleString()}%0A` +
+                                `*Prix total:* ${price}%0A` +
+                                `*Lien du profil:* ${profile}%0A` +
+                                `*Instructions:* ${instructions || 'Aucune'}`;
+                
+                // Create WhatsApp link
+                const whatsappUrl = `https://wa.me/243811127593?text=${message}`;
+                
+                // Open WhatsApp in a new tab
+                window.open(whatsappUrl, '_blank');
+                
+                // Close the success modal
+                whatsappSuccess.classList.remove('active');
+            });
+            
+            // Close the success modal
+            closeSuccessBtn.addEventListener('click', function() {
+                whatsappSuccess.classList.remove('active');
             });
         });
     </script>
