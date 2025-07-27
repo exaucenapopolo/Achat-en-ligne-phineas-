@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commandes - SEDECK BOOST</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0a0a14;
+            --primary-black: #000000;
+            --primary-blue: #0066ff;
+            --electric-blue: #00a3ff;
+            --deep-blue: #0047b3;
+            --accent-yellow: #FFD700;
+            --text-light: #ffffff;
+            --text-gray: #cccccc;
+            --card-bg: #121220;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--electric-blue));
+            --gradient-dark: linear-gradient(135deg, var(--primary-black), var(--primary-dark));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: var(--gradient-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 103, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+        
+        .logo h1::after {
+            content: 'BOOST';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to right, var(--accent-yellow), #ffaa00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            clip-path: polygon(0 0, 100% 0, 100% 65%, 0 65%);
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        .nav-links li a:hover {
+            color: var(--electric-blue);
+        }
+        
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--electric-blue);
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+        
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons button {
+            background: var(--gradient-blue);
+            color: var(--text-light);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 15px;
+            box-shadow: 0 4px 15px rgba(0, 103, 255, 0.3);
+            font-size: 15px;
+        }
+        
+        .auth-buttons button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 103, 255, 0.4);
+        }
+        
+        .auth-buttons button:last-child {
+            background: transparent;
+            border: 2px solid var(--electric-blue);
+        }
+        
+        .auth-buttons button:last-child:hover {
+            background: rgba(0, 103, 255, 0.1);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--text-light);
+        }
+        
+        /* Page Styles */
+        .page-content {
+            padding: 100px 5%;
+            min-height: 70vh;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .page-title h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, var(--electric-blue), var(--text-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .page-title p {
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        /* Orders Section */
+        .orders-container {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .order-steps {
+            flex: 1;
+            background: rgba(25, 25, 40, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .order-steps h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--electric-blue);
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            min-width: 50px;
+            height: 50px;
+            background: var(--gradient-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-right: 20px;
+        }
+        
+        .step-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .step-content p {
+            color: var(--text-gray);
+        }
+        
+        .order-form {
+            flex: 1;
+            background: rgba(25, 25, 40, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .submit-btn {
+            background: var(--gradient-blue);
+            color: var(--text-light);
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 103, 255, 0.4);
+        }
+        
+        .order-summary {
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-yellow);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-black);
+            padding: 80px 5% 30px;
+            border-top: 1px solid rgba(0, 103, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+        
+        .footer-logo h2::after {
+            content: 'BOOST';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to right, var(--accent-yellow), #ffaa00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            clip-path: polygon(0 0, 100% 0, 100% 65%, 0 65%);
+        }
+        
+        .footer-about p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 103, 255, 0.3);
+        }
+        
+        .footer-links h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--text-light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--electric-blue);
+            border-radius: 10px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links ul li a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links ul li a i {
+            margin-right: 10px;
+            color: var(--electric-blue);
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--electric-blue);
+        }
+        
+        .footer-links ul li a:hover i {
+            transform: translateX(5px);
+        }
+        
+        .footer-contact h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--text-light);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--electric-blue);
+            border-radius: 10px;
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+        
+        .contact-info i {
+            color: var(--electric-blue);
+            margin-right: 15px;
+            min-width: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 25px;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+        
+        .powered-by {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .powered-by a {
+            color: var(--electric-blue);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .powered-by a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .orders-container {
+                flex-direction: column;
+            }
+            
+            .page-title h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links, .auth-buttons {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .page-title h1 {
+                font-size: 2.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>SEDECK</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="services.html"><i class="fas fa-rocket"></i> Services</a></li>
+                <li><a href="commandes.html" class="active"><i class="fas fa-shopping-cart"></i> Commandes</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> À Propos</a></li>
+                <li><a href="https://social-boost-horizon-new-sbh.vercel.app" target="_blank"><i class="fas fa-headset"></i> Support</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button><i class="fas fa-sign-in-alt"></i> Connexion</button>
+                <button><i class="fas fa-user-plus"></i> Inscription</button>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Orders Page Content -->
+    <div class="page-content">
+        <div class="page-title">
+            <h1>Passer une Commande</h1>
+            <p>Remplissez le formulaire ci-dessous pour commander nos services premium</p>
+        </div>
+        
+        <div class="orders-container">
+            <div class="order-steps">
+                <h2>Comment commander</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Sélectionnez le service</h3>
+                        <p>Choisissez la plateforme et le type de service que vous souhaitez commander.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Renseignez les détails</h3>
+                        <p>Fournissez les informations nécessaires comme le lien de votre profil.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Choisissez la quantité</h3>
+                        <p>Sélectionnez le nombre d'abonnés, de likes ou de vues désiré.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Paiement et livraison</h3>
+                        <p>Effectuez le paiement et votre commande sera traitée immédiatement.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Suivi de commande</h3>
+                        <p>Suivez l'avancement de votre commande depuis votre espace client.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-form">
+                <form>
+                    <div class="form-group">
+                        <label for="platform">Plateforme</label>
+                        <select id="platform" required>
+                            <option value="">Sélectionnez une plateforme</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="tiktok">TikTok</option>
+                            <option value="youtube">YouTube</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="twitter">Twitter</option>
+                            <option value="spotify">Spotify</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Type de service</label>
+                        <select id="service" required>
+                            <option value="">Sélectionnez un service</option>
+                            <option value="followers">Followers/Abonnés</option>
+                            <option value="likes">Likes</option>
+                            <option value="views">Vues</option>
+                            <option value="comments">Commentaires</option>
+                            <option value="shares">Partages</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quantity">Quantité</label>
+                            <input type="number" id="quantity" min="100" max="100000" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="price">Prix</label>
+                            <input type="text" id="price" value="Sélectionnez d'abord" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profile">Lien de votre profil</label>
+                        <input type="url" id="profile" placeholder="https://..." required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="instructions">Instructions spéciales</label>
+                        <textarea id="instructions" placeholder="Des instructions particulières pour votre commande..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-shopping-cart"></i> Commander maintenant
+                    </button>
+                </form>
+                
+                <div class="order-summary">
+                    <h3>Récapitulatif de commande</h3>
+                    <div class="summary-item">
+                        <span>Plateforme:</span>
+                        <span id="summary-platform">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Service:</span>
+                        <span id="summary-service">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Quantité:</span>
+                        <span id="summary-quantity">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Prix total:</span>
+                        <span id="summary-price">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <h2>SEDECK</h2>
+                </div>
+                <p>Votre partenaire de confiance pour booster votre présence sur les réseaux sociaux. Des services rapides, fiables et abordables pour tous vos besoins digitaux.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                    <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="commandes.html"><i class="fas fa-chevron-right"></i> Commandes</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> À Propos</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Nos Services</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> YouTube</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> TikTok</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Twitter</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
+                    <p><i class="fas fa-envelope"></i> contact@sedeckboost.com</p>
+                    <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+                    <p><i class="fas fa-clock"></i> Support 24/7</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 SEDECK BOOST. Tous droits réservés. | Conçu avec <i class="fas fa-heart" style="color: var(--electric-blue);"></i> pour votre succès digital</p>
+            <p class="powered-by">Site propulsé par <a href="https://social-boost-horizon-new-sbh.vercel.app" target="_blank">SocialBoostHorizon</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle mobile menu
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            const authButtons = document.querySelector('.auth-buttons');
+            
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            authButtons.style.display = authButtons.style.display === 'flex' ? 'none' : 'flex';
+            
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'rgba(10, 10, 20, 0.95)';
+                navLinks.style.padding = '20px 0';
+                navLinks.style.gap = '15px';
+                
+                authButtons.style.position = 'absolute';
+                authButtons.style.top = 'calc(100% + 220px)';
+                authButtons.style.left = '0';
+                authButtons.style.width = '100%';
+                authButtons.style.background = 'rgba(10, 10, 20, 0.95)';
+                authButtons.style.padding = '20px 0';
+                authButtons.style.flexDirection = 'column';
+                authButtons.style.alignItems = 'center';
+                authButtons.style.gap = '15px';
+            } else {
+                navLinks.style = '';
+                authButtons.style = '';
+            }
+        });
+        
+        // Order form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const platformSelect = document.getElementById('platform');
+            const serviceSelect = document.getElementById('service');
+            const quantityInput = document.getElementById('quantity');
+            const priceInput = document.getElementById('price');
+            const summaryPlatform = document.getElementById('summary-platform');
+            const summaryService = document.getElementById('summary-service');
+            const summaryQuantity = document.getElementById('summary-quantity');
+            const summaryPrice = document.getElementById('summary-price');
+            
+            // Pricing data
+            const pricing = {
+                instagram: {
+                    followers: 0.05,
+                    likes: 0.02,
+                    views: 0.01,
+                    comments: 0.10,
+                    shares: 0.15
+                },
+                tiktok: {
+                    followers: 0.06,
+                    likes: 0.03,
+                    views: 0.015,
+                    comments: 0.12,
+                    shares: 0.18
+                },
+                youtube: {
+                    followers: 0.10,
+                    likes: 0.04,
+                    views: 0.005,
+                    comments: 0.15,
+                    shares: 0.20
+                },
+                facebook: {
+                    followers: 0.04,
+                    likes: 0.015,
+                    views: 0.008,
+                    comments: 0.08,
+                    shares: 0.12
+                },
+                twitter: {
+                    followers: 0.03,
+                    likes: 0.01,
+                    views: 0.007,
+                    comments: 0.07,
+                    shares: 0.10
+                },
+                spotify: {
+                    followers: 0.08,
+                    likes: 0.05,
+                    views: 0.002,
+                    comments: 0.10,
+                    shares: 0.15
+                }
+            };
+            
+            // Update price when selections change
+            function updatePrice() {
+                const platform = platformSelect.value;
+                const service = serviceSelect.value;
+                const quantity = parseInt(quantityInput.value) || 0;
+                
+                if (platform && service && quantity > 0) {
+                    const unitPrice = pricing[platform][service];
+                    const totalPrice = (unitPrice * quantity).toFixed(2);
+                    priceInput.value = totalPrice + ' €';
+                    
+                    // Update summary
+                    summaryPlatform.textContent = platformSelect.options[platformSelect.selectedIndex].text;
+                    summaryService.textContent = serviceSelect.options[serviceSelect.selectedIndex].text;
+                    summaryQuantity.textContent = quantity.toLocaleString();
+                    summaryPrice.textContent = totalPrice + ' €';
+                } else {
+                    priceInput.value = 'Sélectionnez d\'abord';
+                    
+                    // Reset summary
+                    summaryPlatform.textContent = '-';
+                    summaryService.textContent = '-';
+                    summaryQuantity.textContent = '-';
+                    summaryPrice.textContent = '-';
+                }
+            }
+            
+            // Add event listeners
+            platformSelect.addEventListener('change', updatePrice);
+            serviceSelect.addEventListener('change', updatePrice);
+            quantityInput.addEventListener('input', updatePrice);
+            
+            // Form submission
+            document.querySelector('form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (platformSelect.value && serviceSelect.value && quantityInput.value > 0) {
+                    alert('Commande passée avec succès ! Notre équipe va traiter votre demande immédiatement.');
+                    this.reset();
+                    updatePrice();
+                } else {
+                    alert('Veuillez remplir tous les champs requis.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

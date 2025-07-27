@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEDECK BOOST - Boostez Vos Réseaux Sociaux</title>
+    <title>Services - SEDECK BOOST</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@800;900&display=swap" rel="stylesheet">
     <style>
@@ -158,165 +158,37 @@
             color: var(--text-light);
         }
         
-        /* Hero Section */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            padding: 0 5%;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0,102,255,0.15) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-            animation: pulse 8s infinite ease-in-out;
-        }
-        
-        .hero-content {
-            max-width: 600px;
-            padding: 40px 0;
-        }
-        
-        .hero h2 {
-            font-family: 'Raleway', sans-serif;
-            font-size: 3.8rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            line-height: 1.15;
-            letter-spacing: -1px;
-        }
-        
-        .hero h2 span {
-            background: var(--gradient-blue);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .hero h2 .yellow {
-            color: var(--accent-yellow);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-bottom: 35px;
-            max-width: 90%;
-        }
-        
-        .cta-button {
-            background: var(--gradient-blue);
-            color: var(--text-light);
-            border: none;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            box-shadow: 0 5px 20px rgba(0, 103, 255, 0.4);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: linear-gradient(to right, var(--deep-blue), var(--primary-blue));
-            transition: width 0.5s ease;
-            z-index: -1;
-        }
-        
-        .cta-button:hover::before {
-            width: 100%;
-        }
-        
-        .cta-button i {
-            margin-left: 12px;
-            transition: transform 0.3s ease;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 103, 255, 0.6);
-        }
-        
-        .cta-button:hover i {
-            transform: translateX(8px);
-        }
-        
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-            position: relative;
-        }
-        
-        .hero-image::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--primary-blue) 0%, transparent 70%);
-            filter: blur(80px);
-            opacity: 0.2;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-        }
-        
-        .hero-image img {
-            max-width: 100%;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        /* Services Section */
-        .services {
+        /* Page Styles */
+        .page-content {
             padding: 100px 5%;
-            position: relative;
+            min-height: 70vh;
         }
         
-        .section-title {
+        .page-title {
             text-align: center;
             margin-bottom: 60px;
         }
         
-        .section-title h2 {
+        .page-title h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
             background: linear-gradient(to right, var(--electric-blue), var(--text-light));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
         
-        .section-title p {
+        .page-title p {
             color: var(--text-gray);
             max-width: 700px;
             margin: 0 auto;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
         
+        /* Services Page */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -410,130 +282,58 @@
             box-shadow: 0 5px 15px rgba(0, 103, 255, 0.3);
         }
         
-        /* About Section */
-        .about {
-            padding: 100px 5%;
-            background: rgba(0, 0, 0, 0.3);
-            position: relative;
+        .platforms-section {
+            margin-top: 80px;
         }
         
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 60px;
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
         }
         
-        .about-text {
-            flex: 1;
+        .platform-card {
+            background: rgba(25, 25, 40, 0.7);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(0, 103, 255, 0.15);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            text-align: center;
         }
         
-        .about-text h2 {
-            font-family: 'Raleway', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 30px;
-            letter-spacing: -0.5px;
-            color: var(--text-light);
+        .platform-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 15px 35px rgba(0, 70, 179, 0.25);
         }
         
-        .about-text h2 span {
-            color: var(--accent-yellow);
-        }
-        
-        .about-text p {
-            color: var(--text-gray);
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-        }
-        
-        .features {
-            margin-top: 30px;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
+        .platform-icon {
+            font-size: 60px;
             margin-bottom: 20px;
-        }
-        
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 103, 255, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            font-size: 20px;
             color: var(--electric-blue);
         }
         
-        .feature-text h3 {
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-        }
-        
-        .feature-text p {
-            color: var(--text-gray);
-            margin-bottom: 0;
-        }
-        
-        .about-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .about-image img {
-            max-width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-        
-        /* Stats Section */
-        .stats {
-            padding: 100px 5%;
-            text-align: center;
-            position: relative;
-        }
-        
-        .stats::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><rect fill="rgba(0,70,179,0.05)" width="100" height="100"/></svg>');
-            background-size: cover;
-        }
-        
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 50px;
-        }
-        
-        .stat-item {
-            padding: 30px;
-            min-width: 250px;
-        }
-        
-        .stat-number {
+        .platform-card h3 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--accent-yellow);
-            margin-bottom: 10px;
-            line-height: 1;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
         
-        .stat-text {
-            color: var(--text-light);
-            font-size: 1.2rem;
-            font-weight: 500;
+        .service-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .service-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-gray);
+        }
+        
+        .service-list li:last-child {
+            border-bottom: none;
         }
         
         /* Footer */
@@ -730,22 +530,8 @@
         
         /* Responsive Design */
         @media (max-width: 992px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 100px 5% 50px;
-            }
-            
-            .hero-content {
-                margin-bottom: 50px;
-            }
-            
-            .hero p {
-                margin: 0 auto 35px;
-            }
-            
-            .about-content {
-                flex-direction: column;
+            .page-title h1 {
+                font-size: 3rem;
             }
         }
         
@@ -758,32 +544,14 @@
                 display: block;
             }
             
-            .hero h2 {
-                font-size: 2.8rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.3rem;
-            }
-            
-            .stat-item {
-                width: 50%;
-                margin-bottom: 30px;
+            .page-title h1 {
+                font-size: 2.5rem;
             }
         }
         
         @media (max-width: 480px) {
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-            
-            .cta-button {
-                padding: 15px 30px;
-                font-size: 1rem;
-            }
-            
-            .stat-item {
-                width: 100%;
+            .page-title h1 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -796,8 +564,8 @@
         </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Accueil</a></li>
-                <li><a href="services.html"><i class="fas fa-rocket"></i> Services</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="services.html" class="active"><i class="fas fa-rocket"></i> Services</a></li>
                 <li><a href="commandes.html"><i class="fas fa-shopping-cart"></i> Commandes</a></li>
                 <li><a href="#"><i class="fas fa-info-circle"></i> À Propos</a></li>
                 <li><a href="https://social-boost-horizon-new-sbh.vercel.app" target="_blank"><i class="fas fa-headset"></i> Support</a></li>
@@ -812,25 +580,11 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Boostez Votre <span>Présence Digitale</span> avec <span class="yellow">SEDECK BOOST</span></h2>
-            <p>Obtenez des abonnés, likes et vues réels instantanément pour toutes les plateformes sociales. Services premium avec résultats garantis et support 24/7.</p>
-            <button class="cta-button">
-                Commencer Maintenant <i class="fas fa-arrow-right"></i>
-            </button>
-        </div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Social Media Boost">
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services">
-        <div class="section-title">
-            <h2>Nos Services Premium</h2>
-            <p>Découvrez nos solutions pour booster votre présence sur toutes les plateformes</p>
+    <!-- Services Page Content -->
+    <div class="page-content">
+        <div class="page-title">
+            <h1>Nos Services Premium</h1>
+            <p>Découvrez nos solutions pour booster votre présence sur toutes les plateformes sociales</p>
         </div>
         
         <div class="services-grid">
@@ -894,84 +648,106 @@
                 <button>Commander</button>
             </div>
         </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section class="about">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>Pourquoi choisir <span>SEDECK BOOST</span> ?</h2>
-                <p>Chez SEDECK BOOST, nous comprenons l'importance d'une présence digitale forte. C'est pourquoi nous offrons des services premium pour booster votre visibilité sur toutes les plateformes sociales.</p>
-                <p>Notre équipe d'experts travaille sans relâche pour vous fournir des résultats rapides, authentiques et durables. Avec des milliers de clients satisfaits, nous sommes le partenaire idéal pour votre croissance digitale.</p>
+        
+        <div class="platforms-section">
+            <div class="page-title">
+                <h1>Plateformes Supportées</h1>
+                <p>Tous les réseaux sociaux populaires sont disponibles avec nos services</p>
+            </div>
+            
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <ul class="service-list">
+                        <li>Followers réels et actifs</li>
+                        <li>Likes instantanés</li>
+                        <li>Vues de stories</li>
+                        <li>Commentaires authentiques</li>
+                        <li>Vues de Reels</li>
+                    </ul>
+                    <button class="service-card button">Voir les offres</button>
+                </div>
                 
-                <div class="features">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h3>Livraison Instantanée</h3>
-                            <p>Vos commandes sont traitées en quelques minutes</p>
-                        </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-tiktok"></i>
                     </div>
-                    
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h3>Sécurité Totale</h3>
-                            <p>Protection garantie de votre compte et données</p>
-                        </div>
+                    <h3>TikTok</h3>
+                    <ul class="service-list">
+                        <li>Followers engagés</li>
+                        <li>Likes rapides</li>
+                        <li>Partages authentiques</li>
+                        <li>Vues de vidéos</li>
+                        <li>Commentaires réels</li>
+                    </ul>
+                    <button class="service-card button">Voir les offres</button>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-youtube"></i>
                     </div>
-                    
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h3>Clients Satisfaits</h3>
-                            <p>Plus de 50,000 clients nous font confiance</p>
-                        </div>
+                    <h3>YouTube</h3>
+                    <ul class="service-list">
+                        <li>Abonnés réels</li>
+                        <li>Likes de vidéos</li>
+                        <li>Commentaires authentiques</li>
+                        <li>Heures de visionnage</li>
+                        <li>Vues de vidéos</li>
+                    </ul>
+                    <button class="service-card button">Voir les offres</button>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-facebook"></i>
                     </div>
+                    <h3>Facebook</h3>
+                    <ul class="service-list">
+                        <li>Likes de page</li>
+                        <li>Followers</li>
+                        <li>Réactions aux publications</li>
+                        <li>Partages</li>
+                        <li>Commentaires</li>
+                    </ul>
+                    <button class="service-card button">Voir les offres</button>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <h3>Twitter</h3>
+                    <ul class="service-list">
+                        <li>Followers</li>
+                        <li>Retweets</li>
+                        <li>Likes</li>
+                        <li>Réponses</li>
+                        <li>Vues de profil</li>
+                    </ul>
+                    <button class="service-card button">Voir les offres</button>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-spotify"></i>
+                    </div>
+                    <h3>Spotify</h3>
+                    <ul class="service-list">
+                        <li>Écouteurs mensuels</li>
+                        <li>Followers</li>
+                        <li>Ajouts aux playlists</li>
+                        <li>Likes de chansons</li>
+                        <li>Vues d'artiste</li>
+                    </ul>
+                    <button class="service-card button">Voir les offres</button>
                 </div>
             </div>
-            
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Why Choose Us">
-            </div>
         </div>
-    </section>
-
-    <!-- Statistics Section -->
-    <section class="stats">
-        <div class="section-title">
-            <h2>Notre Impact</h2>
-            <p>Des résultats qui parlent d'eux-mêmes</p>
-        </div>
-        
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-number">50K+</div>
-                <div class="stat-text">Clients Satisfaits</div>
-            </div>
-            
-            <div class="stat-item">
-                <div class="stat-number">15M+</div>
-                <div class="stat-text">Followers Livrés</div>
-            </div>
-            
-            <div class="stat-item">
-                <div class="stat-number">99.8%</div>
-                <div class="stat-text">Taux de Satisfaction</div>
-            </div>
-            
-            <div class="stat-item">
-                <div class="stat-number">24/7</div>
-                <div class="stat-text">Support Disponible</div>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -1065,6 +841,7 @@
         // Animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
             const serviceCards = document.querySelectorAll('.service-card');
+            const platformCards = document.querySelectorAll('.platform-card');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1078,6 +855,13 @@
             });
             
             serviceCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+            
+            platformCards.forEach(card => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px)';
                 card.style.transition = 'all 0.6s ease';
