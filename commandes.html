@@ -40,7 +40,7 @@
         header {
             background: rgba(10, 10, 20, 0.95);
             backdrop-filter: blur(10px);
-            padding: 20px 5%;
+            padding: 15px 5%;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -54,6 +54,17 @@
         .logo {
             display: flex;
             align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 50px;
+            border-radius: 8px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
         }
         
         .logo h1 {
@@ -456,6 +467,14 @@
         
         .footer-logo {
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            border-radius: 8px;
         }
         
         .footer-logo h2 {
@@ -631,7 +650,11 @@
         }
         
         @media (max-width: 768px) {
-            .nav-links, .auth-buttons {
+            .nav-links {
+                display: none;
+            }
+            
+            .auth-buttons {
                 display: none;
             }
             
@@ -672,6 +695,14 @@
                 font-size: 1rem;
                 padding: 10px;
             }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .logo h1 {
+                font-size: 28px;
+            }
         }
     </style>
 </head>
@@ -679,7 +710,10 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <h1>SEDECK</h1>
+            <img src="https://raw.githubusercontent.com/exaucenapopolo/Achat-en-ligne-phineas-/refs/heads/main/Assets/f371ecab-71a7-4cdb-aedc-d4a1999b6b5b.jpeg" alt="SEDECK Boost Logo">
+            <div class="logo-text">
+                <h1>SEDECK</h1>
+            </div>
         </div>
         <nav>
             <ul class="nav-links">
@@ -730,7 +764,7 @@
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>Choisissez la quantité</h3>
-                        <p>Sélectionnez le nombre d'abonnés, de likes ou de vues désiré.</p>
+                        <p>Sélectionnez le nombre d'abonnés, de likes ou de vues désiré (minimum 100).</p>
                     </div>
                 </div>
                 
@@ -763,6 +797,9 @@
                             <option value="facebook">Facebook</option>
                             <option value="twitter">Twitter</option>
                             <option value="spotify">Spotify</option>
+                            <option value="telegram">Telegram</option>
+                            <option value="whatsapp">WhatsApp</option>
+                            <option value="linkedin">LinkedIn</option>
                         </select>
                     </div>
                     
@@ -780,8 +817,8 @@
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="quantity">Quantité</label>
-                            <input type="number" id="quantity" min="100" max="100000" required>
+                            <label for="quantity">Quantité (minimum 100)</label>
+                            <input type="number" id="quantity" min="100" max="100000" required value="100">
                         </div>
                         
                         <div class="form-group">
@@ -801,7 +838,7 @@
                     </div>
                     
                     <button type="submit" class="submit-btn">
-                        <i class="fab fa-whatsapp"></i> Envoyer sur WhatsApp
+                        ✍️ Commander
                     </button>
                 </form>
                 
@@ -858,6 +895,7 @@
         <div class="footer-content">
             <div class="footer-about">
                 <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com/exaucenapopolo/Achat-en-ligne-phineas-/refs/heads/main/Assets/f371ecab-71a7-4cdb-aedc-d4a1999b6b5b.jpeg" alt="SEDECK Boost Logo">
                     <h2>SEDECK</h2>
                 </div>
                 <p>Votre partenaire de confiance pour booster votre présence sur les réseaux sociaux. Des services rapides, fiables et abordables pour tous vos besoins digitaux.</p>
@@ -888,6 +926,10 @@
                     <li><a href="#"><i class="fas fa-chevron-right"></i> TikTok</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Facebook</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Telegram</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> WhatsApp</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> LinkedIn</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Spotify</a></li>
                 </ul>
             </div>
             
@@ -912,10 +954,8 @@
         // Toggle mobile menu
         document.querySelector('.hamburger').addEventListener('click', function() {
             const navLinks = document.querySelector('.nav-links');
-            const authButtons = document.querySelector('.auth-buttons');
             
             navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            authButtons.style.display = authButtons.style.display === 'flex' ? 'none' : 'flex';
             
             if (navLinks.style.display === 'flex') {
                 navLinks.style.flexDirection = 'column';
@@ -926,19 +966,8 @@
                 navLinks.style.background = 'rgba(10, 10, 20, 0.95)';
                 navLinks.style.padding = '20px 0';
                 navLinks.style.gap = '15px';
-                
-                authButtons.style.position = 'absolute';
-                authButtons.style.top = 'calc(100% + 220px)';
-                authButtons.style.left = '0';
-                authButtons.style.width = '100%';
-                authButtons.style.background = 'rgba(10, 10, 20, 0.95)';
-                authButtons.style.padding = '20px 0';
-                authButtons.style.flexDirection = 'column';
-                authButtons.style.alignItems = 'center';
-                authButtons.style.gap = '15px';
             } else {
                 navLinks.style = '';
-                authButtons.style = '';
             }
         });
         
@@ -957,49 +986,70 @@
             const openWhatsAppBtn = document.getElementById('openWhatsApp');
             const closeSuccessBtn = document.getElementById('closeSuccess');
             
-            // Pricing data in DOLLARS
+            // Pricing data in DOLLARS (prix pour 100 unités)
             const pricing = {
                 instagram: {
-                    followers: 0.05,
-                    likes: 0.02,
-                    views: 0.01,
-                    comments: 0.10,
-                    shares: 0.15
+                    followers: 5.09,
+                    likes: 1.95,
+                    views: 1.94,
+                    comments: 2.39,
+                    shares: 2.13
                 },
                 tiktok: {
-                    followers: 0.06,
-                    likes: 0.03,
-                    views: 0.015,
-                    comments: 0.12,
-                    shares: 0.18
+                    followers: 5.28,
+                    likes: 1.95,
+                    views: 1.69,
+                    comments: 1.95,
+                    shares: 1.77
                 },
                 youtube: {
-                    followers: 0.10,
-                    likes: 0.04,
-                    views: 0.005,
-                    comments: 0.15,
-                    shares: 0.20
+                    followers: 8.91,
+                    likes: 4.00,
+                    views: 4.29,
+                    comments: 4.00,
+                    shares: 4.00
                 },
                 facebook: {
-                    followers: 0.04,
-                    likes: 0.015,
-                    views: 0.008,
-                    comments: 0.08,
-                    shares: 0.12
+                    followers: 5.09,
+                    likes: 5.46,
+                    views: 1.95,
+                    comments: 3.27,
+                    shares: 1.86
                 },
                 twitter: {
-                    followers: 0.03,
-                    likes: 0.01,
-                    views: 0.007,
-                    comments: 0.07,
-                    shares: 0.10
+                    followers: 13.34,
+                    likes: 5.23,
+                    views: 10.50,
+                    comments: 17.70,
+                    shares: 4.88
                 },
                 spotify: {
-                    followers: 0.08,
-                    likes: 0.05,
-                    views: 0.002,
-                    comments: 0.10,
-                    shares: 0.15
+                    followers: 8.61,
+                    likes: 7.80,
+                    views: 8.61,
+                    comments: 8.61,
+                    shares: 8.61
+                },
+                telegram: {
+                    followers: 3.66,
+                    likes: 1.88,
+                    views: 1.77,
+                    comments: 1.88,
+                    shares: 1.88
+                },
+                whatsapp: {
+                    followers: 6.95,
+                    likes: 5.17,
+                    views: 6.95,
+                    comments: 5.17,
+                    shares: 5.17
+                },
+                linkedin: {
+                    followers: 15.00,
+                    likes: 64.50,
+                    views: 15.00,
+                    comments: 64.50,
+                    shares: 64.50
                 }
             };
             
@@ -1007,10 +1057,17 @@
             function updatePrice() {
                 const platform = platformSelect.value;
                 const service = serviceSelect.value;
-                const quantity = parseInt(quantityInput.value) || 0;
+                let quantity = parseInt(quantityInput.value) || 0;
+                
+                // Ensure minimum quantity of 100
+                if (quantity < 100) {
+                    quantity = 100;
+                    quantityInput.value = 100;
+                }
                 
                 if (platform && service && quantity > 0) {
-                    const unitPrice = pricing[platform][service];
+                    const pricePer100 = pricing[platform][service];
+                    const unitPrice = pricePer100 / 100;
                     const totalPrice = (unitPrice * quantity).toFixed(2);
                     priceInput.value = '$' + totalPrice;
                     
